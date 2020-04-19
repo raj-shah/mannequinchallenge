@@ -12,11 +12,12 @@ video_list = glob.glob('test_videos/viz_predictions/*')
 total_videos = len(video_list)
 
 for idx, video in enumerate(video_list):
-    print('Processing [{:02d}/{:02d}]: {}'.format((idx + 1), total_videos, video))
-
-    vidcap = cv2.VideoCapture(os.path.join('../test_videos/covid19', '{}.mp4'.format(video)))
+    VIDEO_NAME = video.split('/')[-1].split('.')[0]
+    vidcap = cv2.VideoCapture(os.path.join('../test_videos/covid19', '{}.mp4'.format(VIDEO_NAME)))
     FRAME_RATE = vidcap.get(cv2.CAP_PROP_FPS)
     vidcap.release()
+
+    print('Processing [{:02d}/{:02d}]: {} | FPS: {}'.format((idx + 1), total_videos, video, FRAME_RATE))
 
     OUTPUT_FRAME_FOLDER = os.path.join(RESULTS_FOLDER, video, 'output_frames')
     OUTPUT_VIDEO = os.path.join(RESULTS_FOLDER, video, '{}.mp4'.format(video))
