@@ -1,5 +1,6 @@
 import os
 import cv2
+import glob
 
 # requires system packages libx264-dev, libx265-dev, x264, x265
 OPENCV_PY_MP4_CODEC = 0x7634706d
@@ -44,7 +45,7 @@ def video_to_frames(input_video, output_folder):
 
 def frames_to_video(frames_folder, output_video_path, frame_rate):
 
-    frame_list = os.listdir(frames_folder)
+    frame_list = glob.glob(os.path.join(frames_folder, '*'))
 
     img = cv2.imread(frame_list[0])
     height, width, layers = img.shape
