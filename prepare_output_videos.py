@@ -19,7 +19,7 @@ for idx, video in enumerate(video_list):
 
     print('Processing [{:02d}/{:02d}]: {} | FPS: {}'.format((idx + 1), total_videos, video, FRAME_RATE))
 
-    OUTPUT_FRAME_FOLDER = os.path.join(RESULTS_FOLDER, video, 'output_frames')
-    OUTPUT_VIDEO = os.path.join(RESULTS_FOLDER, video, '{}.mp4'.format(video))
+    OUTPUT_FRAME_FOLDER = os.path.join(RESULTS_FOLDER, VIDEO_NAME, 'output_frames')
+    OUTPUT_VIDEO = os.path.join(RESULTS_FOLDER, VIDEO_NAME, '{}.mp4'.format(VIDEO_NAME))
 
     frame_processing.frames_to_video(OUTPUT_FRAME_FOLDER, OUTPUT_VIDEO, FRAME_RATE)
