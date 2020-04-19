@@ -19,6 +19,8 @@ for idx, video in enumerate(video_list):
 
     fw = open(os.path.join(BASE_FOLDER, '{}.txt'.format(VIDEO_NAME)), 'w')
 
-    [fw.write(x + '\n') for x in sorted(glob.glob("{}/*.*".format(FRAME_FOLDER)))]
+    frames = glob.glob("{}/*.*".format(FRAME_FOLDER))
+    frames_sorted = sorted(frames, key=lambda x: int(os.path.splitext(x.split('/')[-1])[0]))
+    [fw.write(x + '\n') for x in frames_sorted]
 
     fw.close()
