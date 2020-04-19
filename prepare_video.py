@@ -15,4 +15,10 @@ for idx, video in enumerate(video_list):
 
     print('Processing [{:02d}/{:02d}]: {}'.format((idx+1), total_videos, VIDEO_NAME))
 
-    frame_rate = frame_processing.video_to_frames(video, FRAME_FOLDER)
+    # frame_rate = frame_processing.video_to_frames(video, FRAME_FOLDER)
+
+    fw = open(os.path.join(BASE_FOLDER, '{}.txt'.format(VIDEO_NAME)), 'w')
+
+    [fw.write(x) for x in sorted(glob.glob("{}/*.*".format(FRAME_FOLDER)))]
+
+    fw.close()
