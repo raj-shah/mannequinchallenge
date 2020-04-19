@@ -16,39 +16,41 @@ import torch
 from options.train_options import TrainOptions
 from loaders import aligned_data_loader
 from models import pix2pix_model
-import glob
 
-for video_list in glob.glob('test_videos/*.txt'):
+BATCH_SIZE = 1
 
-    BATCH_SIZE = 1
+opt = TrainOptions().parse()  # set CUDA_VISIBLE_DEVICES before import torch
 
-    opt = TrainOptions().parse()  # set CUDA_VISIBLE_DEVICES before import torch
 
-    eval_num_threads = 2
-    video_data_loader = aligned_data_loader.DAVISDataLoader(video_list, BATCH_SIZE)
-    video_dataset = video_data_loader.load_data()
-    print('========================= Video dataset #images = %d =========' %
-          len(video_data_loader))
+# PARSE FRAME RATE
 
-    model = pix2pix_model.Pix2PixModel(opt)
+video_list = 'test_data/test_davis_video_list.txt'
 
-    torch.backends.cudnn.enabled = True
-    torch.backends.cudnn.benchmark = True
-    best_epoch = 0
-    global_step = 0
+eval_num_threads = 2
+video_data_loader = aligned_data_loader.DAVISDataLoader(video_list, BATCH_SIZE)
+video_dataset = video_data_loader.load_data()
+print('========================= Video dataset #images = %d =========' %
+      len(video_data_loader))
 
-    print(
-        '=================================  BEGIN VALIDATION ====================================='
-    )
+model = pix2pix_model.Pix2PixModel(opt)
 
-    print('TESTING ON VIDEO')
+torch.backends.cudnn.enabled = True
+torch.backends.cudnn.benchmark = True
+best_epoch = 0
+global_step = 0
 
-    model.switch_to_eval()
-    save_path = 'test_videos/viz_predictions/'
-    print('save_path %s' % save_path)
+print(
+    '=================================  BEGIN VALIDATION ====================================='
+)
 
-    for i, data in enumerate(video_dataset):
-        print(i)
-        stacked_img = data[0]
-        targets = data[1]
-        model.run_and_save_DAVIS(stacked_img, targets, save_path)
+print('TESTING ON VIDEO')
+
+model.switch_to_eval()
+save_path = 'test_data/viz_predictions/'
+print('save_path %s' % save_path)
+
+for i, data in enumerate(video_dataset):
+    print(i)
+    stacked_img = data[0]
+    targets = data[1]
+    model.run_and_save_DAVIS(stacked_img, targets, save_path)
