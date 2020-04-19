@@ -7,11 +7,12 @@ if not os.path.exists(BASE_FOLDER):
     os.makedirs(BASE_FOLDER)
 
 video_list = glob.glob('../test_videos/covid19/*')
+total_videos = len(video_list)
 
-for video in video_list:
+for idx, video in enumerate(video_list):
     VIDEO_NAME = output_frame_folder = video.split('/')[-1].split('.')[0]
     FRAME_FOLDER = os.path.join(BASE_FOLDER, VIDEO_NAME)
 
-    frame_rate = frame_processing.video_to_frames(video, FRAME_FOLDER)
+    print('Processing [{:02d}/{:02d}]: {}'.format((idx+1), total_videos, VIDEO_NAME))
 
-    break
+    frame_rate = frame_processing.video_to_frames(video, FRAME_FOLDER)
