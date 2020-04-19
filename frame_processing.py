@@ -1,6 +1,5 @@
 import os
 import cv2
-import time
 
 # requires system packages libx264-dev, libx265-dev, x264, x265
 OPENCV_PY_MP4_CODEC = 0x7634706d
