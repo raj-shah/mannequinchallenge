@@ -15,15 +15,12 @@ total_videos = len(video_list)
 
 for idx, video in enumerate(video_list):
     VIDEO_NAME = video.split('/')[-1].split('.')[0]
-
     FRAME_FOLDER = os.path.join(BASE_FOLDER, VIDEO_NAME)
-    if not os.path.exists(FRAME_FOLDER):
-        os.makedirs(FRAME_FOLDER)
 
-    # frame_rate = frame_processing.video_to_frames(video, FRAME_FOLDER_SUB)
+    frame_rate = frame_processing.video_to_frames(video, FRAME_FOLDER)
 
     print('Processing [{:02d}/{:02d}]: {}'.format((idx + 1), total_videos, VIDEO_NAME))
-    # print('\tframe rate: {}'.format(frame_rate))
+    print('\tframe rate: {}'.format(frame_rate))
 
     fw = open(os.path.join(FRAME_LISTS, '{}.txt'.format(VIDEO_NAME)), 'w')
     frames = glob.glob("{}/*.*".format(FRAME_FOLDER))
