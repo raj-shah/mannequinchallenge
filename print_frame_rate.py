@@ -10,5 +10,6 @@ for video in video_list:
     FRAME_RATE = vidcap.get(cv2.CAP_PROP_FPS)
     vidcap.release()
 
-    print('{:50}:\tfps:{}'.format(VIDEO_NAME, FRAME_RATE))
+    print('{}'.format(VIDEO_NAME))
+    print('\t\tfps: {}'.format(FRAME_RATE))
 
