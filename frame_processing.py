@@ -17,22 +17,22 @@ def video_to_frames(input_video, output_folder):
     # Get frame rate
     FRAME_RATE = int(vidcap.get(cv2.CAP_PROP_FPS))
 
-    # count = 0
-    # success = True
-    # while success:
-    #     try:
-    #         # Read frame and get the shape
-    #         success, image = vidcap.read()
-    #
-    #         if image is not None:
-    #             # Write the image
-    #             cv2.imwrite(os.path.join(output_folder, "{}.jpg".format(count)), image)
-    #
-    #         # Increment the count
-    #         count = count + 1
-    #
-    #     except Exception as exc:
-    #         print('error extracting frame {}. error: {}'.format(count, exc))
+    count = 0
+    success = True
+    while success:
+        try:
+            # Read frame and get the shape
+            success, image = vidcap.read()
+
+            if image is not None:
+                # Write the image
+                cv2.imwrite(os.path.join(output_folder, "{}.jpg".format(count)), image)
+
+            # Increment the count
+            count = count + 1
+
+        except Exception as exc:
+            print('error extracting frame {}. error: {}'.format(count, exc))
 
     vidcap.release()
 
