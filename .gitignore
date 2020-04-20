@@ -8,3 +8,4 @@ test_data/viz_predictions*
 .idea
 test_videos/
 viz_predictions/
+frame_lists/
