@@ -25,7 +25,7 @@ for idx, video in enumerate(video_list):
     # frame_rate = frame_processing.video_to_frames(video, FRAME_FOLDER_SUB)
 
     print('Processing [{:02d}/{:02d}]: {}'.format((idx + 1), total_videos, VIDEO_NAME))
-    print('\tframe rate: {}'.format(frame_rate))
+    # print('\tframe rate: {}'.format(frame_rate))
 
     fw = open(os.path.join(FRAME_LISTS, '{}.txt'.format(VIDEO_NAME)), 'w')
     frames = glob.glob("{}/*.*".format(FRAME_FOLDER_SUB))
