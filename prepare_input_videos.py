@@ -14,7 +14,7 @@ video_list = glob.glob('test_videos/*')
 total_videos = len(video_list)
 
 for idx, video in enumerate(video_list):
-    VIDEO_NAME = output_frame_folder = video.split('/')[-1].split('.')[0]
+    VIDEO_NAME = video.split('/')[-1].split('.')[0]
 
     FRAME_FOLDER = os.path.join(BASE_FOLDER, VIDEO_NAME)
     if not os.path.exists(FRAME_FOLDER):
@@ -22,7 +22,7 @@ for idx, video in enumerate(video_list):
 
     FRAME_FOLDER_SUB = os.path.join(FRAME_FOLDER, 'frames')
 
-    frame_rate = frame_processing.video_to_frames(video, FRAME_FOLDER_SUB)
+    # frame_rate = frame_processing.video_to_frames(video, FRAME_FOLDER_SUB)
 
     print('Processing [{:02d}/{:02d}]: {}'.format((idx + 1), total_videos, VIDEO_NAME))
     print('\tframe rate: {}'.format(frame_rate))
