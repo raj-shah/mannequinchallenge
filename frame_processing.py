@@ -19,7 +19,7 @@ def video_to_frames(input_video, output_folder):
     vidcap = cv2.VideoCapture(input_video)
 
     # Get frame rate
-    FRAME_RATE = vidcap.get(cv2.CAP_PROP_FPS)
+    FRAME_RATE = int(vidcap.get(cv2.CAP_PROP_FPS))
 
     count = 0
     success = True
