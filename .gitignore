@@ -7,3 +7,4 @@ test_data/tum*
 test_data/viz_predictions*
 .idea
 test_videos/
+viz_predictions/
