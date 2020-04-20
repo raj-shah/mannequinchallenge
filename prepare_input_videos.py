@@ -20,15 +20,13 @@ for idx, video in enumerate(video_list):
     if not os.path.exists(FRAME_FOLDER):
         os.makedirs(FRAME_FOLDER)
 
-    FRAME_FOLDER_SUB = os.path.join(FRAME_FOLDER, 'frames')
-
     # frame_rate = frame_processing.video_to_frames(video, FRAME_FOLDER_SUB)
 
     print('Processing [{:02d}/{:02d}]: {}'.format((idx + 1), total_videos, VIDEO_NAME))
     # print('\tframe rate: {}'.format(frame_rate))
 
     fw = open(os.path.join(FRAME_LISTS, '{}.txt'.format(VIDEO_NAME)), 'w')
-    frames = glob.glob("{}/*.*".format(FRAME_FOLDER_SUB))
+    frames = glob.glob("{}/*.*".format(FRAME_FOLDER))
     frames_sorted = sorted(frames, key=lambda x: int(os.path.splitext(x.split('/')[-1])[0]))
     [fw.write(x + '\n') for x in frames_sorted]
     fw.close()
