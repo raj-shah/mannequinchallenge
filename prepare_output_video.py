@@ -32,7 +32,7 @@ RESULTS_FOLDER = 'viz_predictions'
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--out_frames', type=str, help='output frames')
-parser.add_argument('--frame_rate', type=str, help='frame rate')
+parser.add_argument('--frame_rate', type=int, help='frame rate')
 args = parser.parse_args()
 
 VIDEO_NAME = args.out_frames.split('/')[-2]
