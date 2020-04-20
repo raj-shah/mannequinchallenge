@@ -18,7 +18,7 @@ from loaders import aligned_data_loader
 from models import pix2pix_model
 import glob
 
-for video_list in glob.glob('test_videos/*.txt')[6:12]:
+for video_list in glob.glob('frame_lists/*.txt')[3:6]:
 
     BATCH_SIZE = 1
 
@@ -44,7 +44,7 @@ for video_list in glob.glob('test_videos/*.txt')[6:12]:
     print('TESTING ON VIDEO')
 
     model.switch_to_eval()
-    save_path = 'test_videos/viz_predictions/'
+    save_path = 'viz_predictions/'
     print('save_path %s' % save_path)
 
     for i, data in enumerate(video_dataset):
