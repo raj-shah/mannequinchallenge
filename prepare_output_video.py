@@ -9,7 +9,7 @@ OPENCV_PY_MP4_CODEC = 0x7634706d
 def frames_to_video(frames_folder, output_video_path, frame_rate):
 
     frame_list = glob.glob(os.path.join(frames_folder, '*'))
-
+    frames_sorted = sorted(frame_list, key=lambda x: int(os.path.splitext(x.split('/')[-1])[0]))
     img = cv2.imread(frame_list[0])
     height, width, layers = img.shape
     size = (width, height)
@@ -17,7 +17,7 @@ def frames_to_video(frames_folder, output_video_path, frame_rate):
     out = cv2.VideoWriter(
         output_video_path, OPENCV_PY_MP4_CODEC, frame_rate, size)
 
-    for img_name in frame_list:
+    for img_name in frames_sorted:
         try:
             img = cv2.imread(img_name)
             out.write(img)
