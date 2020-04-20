@@ -35,7 +35,7 @@ parser.add_argument('--out_frames', type=str, help='output frames')
 parser.add_argument('--frame_rate', type=int, help='frame rate')
 args = parser.parse_args()
 
-VIDEO_NAME = args.out_frames.split('/')[-2]
+VIDEO_NAME = args.out_frames.split('/')[1]
 VIDEO_PATH = os.path.join(RESULTS_FOLDER, VIDEO_NAME, '{}.mp4'.format(VIDEO_NAME))
 
 print('Processing {}'.format(VIDEO_NAME))
