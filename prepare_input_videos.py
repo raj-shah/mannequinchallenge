@@ -10,7 +10,7 @@ FRAME_LISTS = 'frame_lists'
 if not os.path.exists(FRAME_LISTS):
     os.makedirs(FRAME_LISTS)
 
-video_list = glob.glob('../test_videos/covid19/*')
+video_list = glob.glob('test_videos/*')
 total_videos = len(video_list)
 
 for idx, video in enumerate(video_list):
